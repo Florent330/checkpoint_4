@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -44,6 +46,16 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Show", mappedBy="artistes")
+     */
+    private $shows;
+
+    public function __construct()
+    {
+        $this->shows = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -141,5 +153,33 @@ class User implements UserInterface
     public function eraseCredentials ()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return Collection|Show[]
+     */
+    public function getShows(): Collection
+    {
+        return $this->shows;
+    }
+
+    public function addShow(Show $show): self
+    {
+        if (!$this->shows->contains($show)) {
+            $this->shows[] = $show;
+            $show->addArtiste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShow(Show $show): self
+    {
+        if ($this->shows->contains($show)) {
+            $this->shows->removeElement($show);
+            $show->removeArtiste($this);
+        }
+
+        return $this;
     }
 }
