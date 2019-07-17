@@ -44,58 +44,58 @@ class Show
      */
     private $artistes;
 
-    public function __construct()
+    public function __construct ()
     {
         $this->artistes = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId (): ?int
     {
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate (): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate ( \DateTimeInterface $date ): self
     {
         $this->date = $date;
 
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName (): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName ( string $name ): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getDescription (): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription ( ?string $description ): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getPicture(): ?string
+    public function getPicture (): ?string
     {
         return $this->picture;
     }
 
-    public function setPicture(?string $picture): self
+    public function setPicture ( ?string $picture ): self
     {
         $this->picture = $picture;
 
@@ -105,12 +105,12 @@ class Show
     /**
      * @return Collection|User[]
      */
-    public function getArtistes(): Collection
+    public function getArtistes (): Collection
     {
         return $this->artistes;
     }
 
-    public function addArtiste(User $artiste): self
+    public function addArtiste ( User $artiste ): self
     {
         if (!$this->artistes->contains($artiste)) {
             $this->artistes[] = $artiste;
@@ -119,7 +119,7 @@ class Show
         return $this;
     }
 
-    public function removeArtiste(User $artiste): self
+    public function removeArtiste ( User $artiste ): self
     {
         if ($this->artistes->contains($artiste)) {
             $this->artistes->removeElement($artiste);

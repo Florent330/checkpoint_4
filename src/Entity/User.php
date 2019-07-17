@@ -52,69 +52,70 @@ class User implements UserInterface
      */
     private $shows;
 
-    public function __construct()
+    public function __construct ()
     {
         $this->shows = new ArrayCollection();
     }
+
     public function __toString ()
     {
         return $this->getLastname() . ' ' . $this->getFirstname();
     }
 
-    public function getId(): ?int
+    public function getId (): ?int
     {
         return $this->id;
     }
 
-    public function getLastname(): ?string
+    public function getLastname (): ?string
     {
         return $this->lastname;
     }
 
-    public function setLastname(?string $lastname): self
+    public function setLastname ( ?string $lastname ): self
     {
         $this->lastname = $lastname;
 
         return $this;
     }
 
-    public function getFirstname(): ?string
+    public function getFirstname (): ?string
     {
         return $this->firstname;
     }
 
-    public function setFirstname(?string $firstname): self
+    public function setFirstname ( ?string $firstname ): self
     {
         $this->firstname = $firstname;
 
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getEmail (): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail ( string $email ): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function getPassword (): ?string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword ( string $password ): self
     {
         $this->password = $password;
 
         return $this;
     }
 
-    public function getRoles(): array
+    public function getRoles (): array
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
@@ -123,7 +124,7 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles ( array $roles ): self
     {
         $this->roles = $roles;
 
@@ -166,12 +167,12 @@ class User implements UserInterface
     /**
      * @return Collection|Show[]
      */
-    public function getShows(): Collection
+    public function getShows (): Collection
     {
         return $this->shows;
     }
 
-    public function addShow(Show $show): self
+    public function addShow ( Show $show ): self
     {
         if (!$this->shows->contains($show)) {
             $this->shows[] = $show;
@@ -181,7 +182,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function removeShow(Show $show): self
+    public function removeShow ( Show $show ): self
     {
         if ($this->shows->contains($show)) {
             $this->shows->removeElement($show);

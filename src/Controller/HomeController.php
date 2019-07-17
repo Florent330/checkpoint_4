@@ -47,15 +47,15 @@ class HomeController extends AbstractController
      * @param $id
      * @return Response
      */
-    public function showOne( $id){
+    public function showOne ( $id )
+    {
         $repo = $this->getDoctrine()->getRepository(Show::class);
         $show = $repo->find($id);
 
         return $this->render('home/showOneEvent.html.twig', [
-            'show' =>$show,
+            'show' => $show,
         ]);
     }
-
 
 
 }

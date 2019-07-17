@@ -11,12 +11,17 @@
     <title>{% block title %}Bienvenue au Globe Circus{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom fonts for this template -->
-    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"
+          rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
     <link href="/css/clean-blog.css/clean-blog.min.css" rel="stylesheet">
@@ -32,7 +37,9 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="index.html"></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
         </button>
@@ -48,21 +55,21 @@
                     <a class="nav-link" href="{{ path('about_us') }}">A propos</a>
                 </li>
                 {% if is_granted("ROLE_ADMIN") %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('show_index') }}">Gestion</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('show_index') }}">Gestion</a>
+                    </li>
                 {% endif %}
                 <li class="nav-item">
                     <a class="nav-link konami" href="{{ path('app_register') }}">S'inscrire</a>
                 </li>
                 <li class="nav-item">
-                   {% if is_granted("ROLE_USER") %}
-                    <a class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a>
+                    {% if is_granted("ROLE_USER") %}
+                    <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                 </li>
-                {% else %}
-                    <li class="nav-item konami{% if mainNavLogin is defined %}active{% endif %}">
-                        <a class="nav-link" href="{{path('app_login')}}">Se connecter</a>
-                    </li>
+            {% else %}
+                <li class="nav-item konami{% if mainNavLogin is defined %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+                </li>
                 {% endif %}
 
             </ul>
@@ -84,7 +91,7 @@
         </div>
     </div>
 </header>
-
+{% include 'inc/_flashMessages.html.twig' %}
 <!-- Main Content -->
 {% block body %}
 
@@ -131,24 +138,30 @@
 
 <!-- Bootstrap core JavaScript -->
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 <!-- Custom scripts for this template -->
 <script src="/js/clean-blog.js/clean-blog.min.js"></script>
 <script>
-if ( window.addEventListener ) {
-var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
-$(".konami").hide();
-window.addEventListener("keydown", function(e){
-kkeys.push( e.keyCode );
-if ( kkeys.toString().indexOf( konami ) >= 0 ) {
-    $(".konami").show();
+    if (window.addEventListener) {
+        var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+        $(".konami").hide();
+        window.addEventListener("keydown", function (e) {
+            kkeys.push(e.keyCode);
+            if (kkeys.toString().indexOf(konami) >= 0) {
+                $(".konami").show();
 
-}
-}, true);
-}</script>
+            }
+        }, true);
+    }</script>
 </body>
 
 </html>

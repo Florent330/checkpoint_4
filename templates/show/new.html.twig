@@ -3,9 +3,11 @@
 {% block title %}Nouveau spectacle{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau spectacle</h1>
+    <div class="container">
+        <h1>Créer un nouveau spectacle</h1>
 
-    {{ include('show/_form.html.twig') }}
+        {{ include('show/_form.html.twig') }}
 
-    <button class="btn"><a href="{{ path('show_index') }}">Retour</a></button>
+        <button class="btn"><a href="{{ path('show_index') }}">Retour</a></button>
+    </div>
 {% endblock %}

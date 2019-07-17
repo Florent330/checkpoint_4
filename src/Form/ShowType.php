@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ShowType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm ( FormBuilderInterface $builder, array $options )
     {
 
         $builder
@@ -19,14 +19,13 @@ class ShowType extends AbstractType
             ->add('picture')
             ->add('artistes', null, [
 
-                'expanded' => true,
-                'multiple' => true,
-                'by_reference' => false]
-                )
-        ;
+                    'expanded' => true,
+                    'multiple' => true,
+                    'by_reference' => false]
+            );
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions ( OptionsResolver $resolver )
     {
         $resolver->setDefaults([
             'data_class' => Show::class,

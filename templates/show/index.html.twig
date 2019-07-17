@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{ show.date ? show.date|date('d-m-Y H:i') : '' }}</td>
                     <td>{{ show.name }}</td>
-                    <td>{{ show.description | truncate(150, true, " ...")}}</td>
+                    <td>{{ show.description | truncate(150, true, " ...") }}</td>
                     <td>{{ show.picture }}</td>
                     <td>
                         <a href="{{ path('show_show', {'id': show.id}) }}">Voir</a>

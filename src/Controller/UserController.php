@@ -14,7 +14,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user", name="user")
      */
-    public function index()
+    public function index ()
     {
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
@@ -27,7 +27,7 @@ class UserController extends AbstractController
      * @param User $user
      * @return Response
      */
-    public function edit(Request $request, User $user): Response
+    public function edit ( Request $request, User $user ): Response
     {
 
         $form = $this->createForm(UserType::class, $user);
