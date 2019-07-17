@@ -1,41 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Show index{% endblock %}
+{% block title %}Gestion des spectacles{% endblock %}
 
 {% block body %}
-    <h1>Show index</h1>
+    <div class="container">
+        <h1>Spectacle</h1>
+        <button class="btn>"><a href="{{ path('show_new') }}">Nouveau spectacle</a></button>
 
-    <table class="table">
-        <thead>
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <th>Id</th>
                 <th>Date</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Description</th>
-                <th>Picture</th>
-                <th>actions</th>
+                <th>Image</th>
+                <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for show in shows %}
-            <tr>
-                <td>{{ show.id }}</td>
-                <td>{{ show.date ? show.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ show.name }}</td>
-                <td>{{ show.description }}</td>
-                <td>{{ show.picture }}</td>
-                <td>
-                    <a href="{{ path('show_show', {'id': show.id}) }}">show</a>
-                    <a href="{{ path('show_edit', {'id': show.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('show_new') }}">Create new</a>
+            </thead>
+            <tbody>
+            {% for show in shows %}
+                <tr>
+                    <td>{{ show.date ? show.date|date('d-m-Y H:i') : '' }}</td>
+                    <td>{{ show.name }}</td>
+                    <td>{{ show.description | truncate(150, true, " ...")}}</td>
+                    <td>{{ show.picture }}</td>
+                    <td>
+                        <a href="{{ path('show_show', {'id': show.id}) }}">Voir</a>
+                        <a href="{{ path('show_edit', {'id': show.id}) }}">Editer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Pas de correspondance trouvée</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

@@ -11,12 +11,14 @@ class ShowType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('date')
             ->add('name')
             ->add('description')
             ->add('picture')
-            ->add('artistes', null, ['choice_label'=> 'lastname',
+            ->add('artistes', null, [
+
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference' => false]

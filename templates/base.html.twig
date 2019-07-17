@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Bienvenue au Globe Circus{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -21,16 +21,17 @@
     <!-- Custom styles for this template -->
     <link href="/css/clean-blog.css/clean-blog.min.css" rel="stylesheet">
     <link href="/css/clean-blog.css" rel="stylesheet">
+    <link href="/css/array.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
     {% block stylesheets %}{% endblock %}
 
 </head>
-
 <body>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.html"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -38,27 +39,29 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('home') }}">Home</a>
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('home') }}">About</a>
+                    <a class="nav-link" href="{{ path('home_show') }}">évènements</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('home') }}">Sample Post</a>
+                    <a class="nav-link" href="{{ path('about_us') }}">A propos</a>
+                </li>
+                {% if is_granted("ROLE_ADMIN") %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('show_index') }}">Gestion</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link konami" href="{{ path('app_register') }}">S'inscrire</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('home') }}">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_register') }}">Register</a>
-                </li>
-                <li class="nav-item">
-                   {% if is_granted('ROLE_USER') %}
-                    <a class="nav-link" href="{{path('app_logout')}}">Logout</a>
+                   {% if is_granted("ROLE_USER") %}
+                    <a class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a>
                 </li>
                 {% else %}
-                    <li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
-                        <a class="nav-link" href="{{path('app_login')}}">Login</a>
+                    <li class="nav-item konami{% if mainNavLogin is defined %}active{% endif %}">
+                        <a class="nav-link" href="{{path('app_login')}}">Se connecter</a>
                     </li>
                 {% endif %}
 
@@ -74,8 +77,8 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="site-heading">
-                    <h1>Clean Home</h1>
-                    <span class="subheading">A Home Theme by Start Bootstrap</span>
+                    <h1>Globe Circus</h1>
+                    <span class="subheading">Cirque de renommée mondiale</span>
                 </div>
             </div>
         </div>
@@ -120,7 +123,7 @@
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
+                <p class="copyright text-muted">Droits d'auteurs réservés &copy; Site 2019</p>
             </div>
         </div>
     </div>
@@ -134,6 +137,18 @@
 
 <!-- Custom scripts for this template -->
 <script src="/js/clean-blog.js/clean-blog.min.js"></script>
+<script>
+if ( window.addEventListener ) {
+var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+$(".konami").hide();
+window.addEventListener("keydown", function(e){
+kkeys.push( e.keyCode );
+if ( kkeys.toString().indexOf( konami ) >= 0 ) {
+    $(".konami").show();
+
+}
+}, true);
+}</script>
 </body>
 
 </html>

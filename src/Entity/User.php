@@ -56,6 +56,10 @@ class User implements UserInterface
     {
         $this->shows = new ArrayCollection();
     }
+    public function __toString ()
+    {
+        return $this->getLastname() . ' ' . $this->getFirstname();
+    }
 
     public function getId(): ?int
     {

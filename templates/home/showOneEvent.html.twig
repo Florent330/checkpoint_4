@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spectacle{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <h2 class="col-lg-8 col-md-10 mx-auto">
+                {{ show.name }}
+            </h2>
+            <br>
+            <div class="post-preview">
+                <p class="post-subtitle">
+                    {{ show.date|date('d-m-Y H:i') }}
+                </p>
+                <p class="post-subtitle">
+                    {{ show.description }}
+                </p>
+                <img src="{{ show.picture }}" alt="">
+            </div>
+            <hr>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spectacle{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            {% for show in show %}
+                <h2 class="col-lg-8 col-md-10 mx-auto">
+                    {{ show.name }}
+                </h2>
+                <br>
+                <div class="post-preview">
+                    <a href="post.html">
+                        <a href="{{ path('home_show_one', {'id' : show.id }) }}">
+                            <p class="post-subtitle">
+                                {{ show.date|date('d-m-Y H:i') }}
+                            </p>
+                            <p class="post-subtitle">
+                                {{ show.description | truncate(150, true, " ...") }}
+                            </p>
+                            <img src="{{ show.picture }}" alt="">
+                        </a>
+                    </a>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
