@@ -15,8 +15,8 @@ class ShowType extends AbstractType
         $builder
             ->add('date')
             ->add('name')
-            ->add('description')
             ->add('picture')
+            ->add('description')
             ->add('artistes', null, [
 
                     'expanded' => true,

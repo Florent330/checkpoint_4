@@ -3,11 +3,10 @@
 {% block title %}Nouveau spectacle{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Créer un nouveau spectacle</h1>
+        <h1 class="title-admin">Créer un nouveau spectacle</h1>
+        <div class="row col-12 form-admin">
 
         {{ include('show/_form.html.twig') }}
 
-        <button class="btn"><a href="{{ path('show_index') }}">Retour</a></button>
     </div>
 {% endblock %}
